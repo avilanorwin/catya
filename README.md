@@ -187,7 +187,7 @@ flowchart TD
 
 ### Test Target
 
-`https://calculator.net/percentage-calculator.html`
+`https://www.calculator.net/percent-calculator.html`
 
 ## Sample Execution
 
