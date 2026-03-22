@@ -45,7 +45,6 @@ You can think of it like the `main()` function of a program.
 Example:
 Run the catya application and input the following in the UI. Note that Item is auto filled-up once Test Case is filled-up.
 
-```txt
 | Item | Test Cases| Steps                                                                  | Expected Result | Actual Result | Status |
 |------|-----------|------------------------------------------------------------------------|-----------------|---------------|--------|
 | 1    | start     | OPEN browser="chrome"                                                  |                 |               |        |
@@ -55,7 +54,6 @@ Run the catya application and input the following in the UI. Note that Item is a
 |      |           | CLICK xpath="//input[@value='Calculate']"                              |                 |               |        |
 |      |           | WAIT_VISIBLE xpath="//p[@class='verybigtext']" timeout=10              |                 |               |        |
 |      |           | VERIFY xpath="//*[@id='content']/p[2]/font/b"                          |                 |               |        |
-```
 
 Test cases can be reused to reduce redundancy and improve maintainability. A test case functions like a reusable unit that can be invoked within the **start** test case.
 
@@ -98,7 +96,6 @@ A common example is a successful login flow.
 
 Then another test case can reuse it:
 
-```txt
 | Item | Test Cases     | Steps                                                                 | Expected Result | Actual Result | Status |
 |------|----------------|-----------------------------------------------------------------------|-----------------|---------------|--------|
 | 2    | LoginPreparation | Execute necessary commands here to complete the test case            |                 |               |        |
@@ -109,7 +106,6 @@ Then another test case can reuse it:
 |      |                | call OpenTransferPage                                                |                 |               |        |
 |      |                | call SubmitTransfer                                                  |                 |               |        |
 |      |                | call VerifyTransferSuccess                                           |                 |               |        |
-```
 
 This avoids copying the same login steps into every test case.
 
