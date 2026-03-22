@@ -74,8 +74,6 @@ VERIFY xpath="//p[@class='verybigtext']" value="5"
 
 ![CATYA Demo](docs/demo.png)
 
-> Place your screenshot in: `docs/demo.png`
-
 ---
 
 ## DSL Syntax
