@@ -5,7 +5,7 @@ CATYA is a **Java + Selenium-based automation framework** that executes browser 
 ---
 
 ## Features
-- DSL-driven automation (no coding required)
+- DSL-driven automation
 - Excel-based test scripts
 - Selenium WebDriver integration
 - Screenshot on failure
@@ -368,6 +368,66 @@ flowchart TD
 
 ---
 
+## Future Enhancements
+
+### Agentic AI–Driven Test Automation
+
+As agentic AI continues to evolve, I am exploring how this tool can be enhanced by incorporating multiple AI agents across the full testing lifecycle, including requirements analysis, test planning, test execution, test reporting, and automated recommendations for production readiness.
+
+This initiative is part of my ongoing effort to deepen my understanding of agentic AI and to apply these concepts in future system designs as a Technology Architect.
+
+The objective is to design a system that:
+
+- analyzes input requirements such as user stories and specifications  
+- generates structured and traceable test plans  
+- produces reusable and modular test cases aligned with business workflows  
+- incorporates human-in-the-loop validation to ensure correctness, completeness, and alignment with expected behavior  
+- translates validated test cases into CATYA DSL scripts for deterministic execution  
+- executes generated scripts through the CATYA engine  
+- leverages execution results to improve test quality, coverage, and future test generation  
+
+This approach separates **intelligent test generation** from **deterministic execution**, enabling scalability while preserving reliability.
+
+---
+
+### Architecture Overview
+
+```mermaid
+flowchart TD
+    A[Requirements / User Stories / Specifications] --> B[Requirement Ingestion Layer]
+
+    B --> C[Agentic AI Orchestrator]
+
+    subgraph AI_Agents [Agentic AI System]
+        D1[Requirement Analysis Agent]
+        D2[Test Plan Agent]
+        D3[Test Case Generation Agent]
+        D4[Validation Agent]
+        D5[CATYA Script Generation Agent]
+    end
+
+    C --> D1
+    D1 --> D2
+    D2 --> D3
+    D3 --> D4
+    D4 -->|Validated Output| D5
+
+    D4 -->|Needs Review| H[Human-in-the-Loop Review]
+    H -->|Approve / Refine| D5
+    H -->|Send Back for Revision| C
+
+    D5 --> I[CATYA DSL Repository]
+    I --> J[CATYA Execution Engine]
+
+    J --> K[Test Results / Logs / Reports]
+
+    K --> L[Feedback & Learning Layer]
+    L --> C
+
+    K --> M[Dashboard / Reporting Portal]
+    J --> N[Target Application Under Test]
+```
+
 ## Summary
 
 CATYA supports:
@@ -379,3 +439,4 @@ CATYA supports:
 - real browser automation using Selenium
 
 Design your CATYA test cases the same way you design clean software: small, reusable, and easy to understand.
+
