@@ -98,11 +98,11 @@ Then another test case can reuse it:
 
 | Item | Test Cases     | Steps                                                                 | Expected Result | Actual Result | Status |
 |------|----------------|-----------------------------------------------------------------------|-----------------|---------------|--------|
-| 2    | LoginPreparation | Execute necessary commands here to complete the test case            |                 |               |        |
-| 3    | OpenTransferPage | Execute necessary commands here to complete the test case            |                 |               |        |
-| 4    | SubmitTransfer   | Execute necessary commands here to complete the test case            |                 |               |        |
-| 5    | VerifyTransferSuccess | Execute necessary commands here to complete the test case       |                 |               |        |
-| 6    | Start  | call LoginPreparation                                                |                 |               |        |
+| 1    | LoginPreparation | Execute necessary commands here to complete the test case            |                 |               |        |
+| 2    | OpenTransferPage | Execute necessary commands here to complete the test case            |                 |               |        |
+| 3    | SubmitTransfer   | Execute necessary commands here to complete the test case            |                 |               |        |
+| 4    | VerifyTransferSuccess | Execute necessary commands here to complete the test case       |                 |               |        |
+| 5    | Start  | call LoginPreparation                                                |                 |               |        |
 |      |                | call OpenTransferPage                                                |                 |               |        |
 |      |                | call SubmitTransfer                                                  |                 |               |        |
 |      |                | call VerifyTransferSuccess                                           |                 |               |        |
@@ -378,7 +378,6 @@ This approach separates **intelligent test generation** from **deterministic exe
 ```mermaid
 flowchart TD
     A[Requirements / User Stories / Specifications] --> B[Requirement Ingestion Layer]
-
     B --> C[Agentic AI Orchestrator]
 
     subgraph AI_Agents [Agentic AI System]
@@ -389,24 +388,26 @@ flowchart TD
         D5[CATYA Script Generation Agent]
     end
 
-    C --> D1
-    D1 --> D2
-    D2 --> D3
-    D3 --> D4
-    D4 -->|Validated Output| D5
+    C --> D1 --> D2 --> D3 --> D4
 
-    D4 -->|Needs Review| H[Human-in-the-Loop Review]
+    %% Decision based on confidence / policy
+    D4 -->|High Confidence| D5
+    D4 -->|Low Confidence / Needs Review| H[Human-in-the-Loop Review]
+
+    %% Human path
     H -->|Approve / Refine| D5
     H -->|Send Back for Revision| C
 
+    %% Execution
     D5 --> I[CATYA DSL Repository]
     I --> J[CATYA Execution Engine]
-
     J --> K[Test Results / Logs / Reports]
 
+    %% Feedback loop
     K --> L[Feedback & Learning Layer]
     L --> C
 
+    %% Outputs
     K --> M[Dashboard / Reporting Portal]
     J --> N[Target Application Under Test]
 ```
